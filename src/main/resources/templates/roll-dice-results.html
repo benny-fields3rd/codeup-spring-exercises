@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Roll Dice Results')"></head>
+
+<body>
+<nav th:replace="partials :: navbar" />
+
+<h1>Your results:</h1>
+<h1>
+    <div th:if="${guess == dieRoll}">
+        <h2>Congrats! You guessed what was rolled!</h2>
+        <p>You guessed: <span th:text="${guess}"></span></p>
+        <p>You rolled: <span th:text="${dieRoll}"></span></p>
+
+    </div>
+    <div th:if="${guess != dieRoll}">
+        <h2>You didn't guess correctly.</h2>
+        <p>You guessed: <span th:text="${guess}"/></p>
+        <p>You rolled: <span th:text="${dieRoll}"/></p>
+    </div>
+
+
+</h1>
+<script th:replace="partials :: scripts" />
+
+</body>
+</html>

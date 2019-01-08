@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Roll Dice')"></head>
+
+<body>
+    <nav th:replace="partials :: navbar" />
+
+    <h1>Welcome to the Dice Roll Guess Game!</h1>
+    <h2>Select a link below to roll</h2>
+        <a href="/roll-dice/1">This rolls a 1</a><br />
+        <a href="/roll-dice/2">This rolls a 2</a><br />
+        <a href="/roll-dice/3">This rolls a 3</a><br />
+        <a href="/roll-dice/4">This rolls a 4</a><br />
+        <a href="/roll-dice/5">This rolls a 5</a><br />
+        <a href="/roll-dice/6">This rolls a 6</a>
+        <a></a>
+    <script th:replace="partials :: scripts" />
+</body>
+</html>
