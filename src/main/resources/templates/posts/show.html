@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Single Posts</title>
+    </head>
+    <body>
 
-</body>
+        <p>Title: <span th:text="${post.getTitle()}"></span></p>
+        <p>Description: <span th:text="${post.getBody()}"></span></p>
+
+        <script th:replace="partials :: scripts"></script>
+    </body>
 </html>
