@@ -17,14 +17,14 @@ public class PostService {
 
     public PostService() {
         posts = new ArrayList<>();
-        createPost();
+        createPosts();
     }
 
     public List<Post> allPosts() {
         return posts;
     }
 
-    public Post create(Post post){
+    public Post save(Post post){
         post.setId(posts.size() + 1);
         posts.add(post);
         return post;
@@ -34,13 +34,24 @@ public class PostService {
         return posts.get((int)id - 1);
     }
 
-    public void createPost(){
+    public Post edit(Post post) {
+        Post pp = posts.get((int) post.getId() - 1);
+        pp.setTitle(post.getTitle());
+        pp.setBody(post.getBody());
+        return pp;
+    }
+
+    public void createPosts(){
         Post post1 = new Post( "Post 1", "body 1");
 
-        create(post1); // One way to use create method to pass post
-        create(new Post( "Post 2", "body 2"));
-        create(new Post("Post 3", "Body 3")); // another way to do it
-        create(new Post("Post 4", "Body 4"));
-        create(new Post("Post 5", "Body 5"));
+        save(post1); // One way to use create method to pass post
+        save(new Post( "Post 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
+                "\n"));
+        save(new Post("Post 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
+                "\n")); // another way to do it
+        save(new Post("Post 4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
+                "\n"));
+        save(new Post("Post 5", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
+                "\n"));
     }
 }

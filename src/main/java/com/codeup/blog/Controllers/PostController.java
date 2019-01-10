@@ -1,5 +1,6 @@
 package com.codeup.blog.Controllers;
 
+import com.codeup.blog.models.Post;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +28,26 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String createPostForm(){
-        return "This is the form for creating posts!";
+    public String createPostForm(Model model){
+        model.addAttribute("post",new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String  createPost(){
-        return "This creates a new post!";
+    public String save(@ModelAttribute Post post){
+        postService.save(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String editPostForm(@PathVariable Long id, Model model){
+        model.addAttribute("post", postService.singlePost(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/edit")
+    public String saveEditedPost(@ModelAttribute Post post){
+        postService.edit(post);
+        return "redirect:/posts" + post.getId();
     }
 }
