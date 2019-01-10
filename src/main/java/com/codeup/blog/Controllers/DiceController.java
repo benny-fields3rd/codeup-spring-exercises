@@ -19,7 +19,8 @@ public class DiceController {
 
         model.addAttribute("dieRoll", dieRoll);
         model.addAttribute("guess", n);
-
+        // Logic for the dice roll and guesses
+        model.addAttribute("correct", n == dieRoll);
         return "roll-dice-results";
     }
 

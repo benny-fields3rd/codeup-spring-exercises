@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Single Posts</title>
-    </head>
+<head th:replace="partials :: head('All Posts')"></head>
+
     <body>
+        <div th:replace="partials :: header"></div>
+        <div th:replace="partials :: navbar"></div>
 
-        <p>Title: <span th:text="${post.getTitle()}"></span></p>
-        <p>Description: <span th:text="${post.getBody()}"></span></p>
+        <h3>Single Post</h3>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><span th:text="${post.getTitle()}"></span></h5>
+                    <p class="card-text"><span th:text="${post.getId()}"></span></p>
+                    <p class="card-text"><span th:text="${post.getBody()}"></span></p>
+                </div>
+            </div>
 
-        <script th:replace="partials :: scripts"></script>
+        <div th:replace="partials :: footer"></div>
+        <div th:replace="partials :: scripts"></div>
     </body>
 </html>

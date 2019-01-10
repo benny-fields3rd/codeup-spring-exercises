@@ -6,20 +6,12 @@
         <nav th:replace="partials :: navbar" />
 
         <h1>Your results:</h1>
-        <h1>
-            <div th:if="${guess == dieRoll}">
-                <h2>Congrats! You guessed what was rolled!</h2>
-                <p>You guessed: <span th:text="${guess}"></span></p>
-                <p>You rolled: <span th:text="${dieRoll}"></span></p>
-            </div>
+   <h3>The roll was: <span th:text="${dieRoll}"></span></h3>
+   <h3>You guessed: <span th:text="${guess}"></span></h3>
+   <h3><span th:if="${correct}">You got it right!</span></h3>
+   <h3><span th:if="${correct}"><a href="/roll-dice">Play again?</a></span></h3>
+   <h3><span th:unless="${correct}"><a href="/roll-dice">Try again</a></span></h3>
 
-            <div th:if="${guess != dieRoll}">
-                <h2>You didn't guess correctly.</h2>
-                <p>You guessed: <span th:text="${guess}"/></p>
-                <p>You rolled: <span th:text="${dieRoll}"/></p>
-            </div>
-
-        </h1>
         <script th:replace="partials :: scripts" />
 
     </body>

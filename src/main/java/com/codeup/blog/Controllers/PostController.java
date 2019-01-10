@@ -1,31 +1,28 @@
 package com.codeup.blog.Controllers;
 
-import bean.Post;
+import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class PostController {
+    private final PostService postService;
+
+    public PostController( PostService postService ) {
+        this.postService = postService;
+    }
 
     @GetMapping("/posts")
     public String allPosts(Model model){
-        List<Post> allPosts = new ArrayList<>();
-        Post post1 = new Post("My array Post1", "Body of this post1!");
-        Post post2 = new Post("My array2 Post2", "Body of this post2!");
-        allPosts.add(post1);
-        allPosts.add(post2);
-        model.addAttribute("posts", allPosts);
-        return "/posts/index";
+        model.addAttribute("posts", postService.allPosts());
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String singlePost( @PathVariable long id, Model model ){
-        Post post = new Post("My First Post", "Body of this post!");
-        model.addAttribute("post",post);
+        model.addAttribute("post",postService.singlePost(id)); // pass id for single post
+        model.addAttribute("id", id);
         return "posts/show";
     }
 
@@ -35,7 +32,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String  submitPost(){
+    public String  createPost(){
         return "This creates a new post!";
     }
 }
