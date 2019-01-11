@@ -48,7 +48,21 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String saveEditedPost(@ModelAttribute Post post){
-        postService.edit(post);
+        postService.save(post);
         return "redirect:/posts/" + post.getId();
     }
+
+    @GetMapping("/posts/{id}/delete")
+    public String showDeleteForm(@PathVariable long id, Model model){
+        model.addAttribute("post", postService.singlePost(id));
+        return "posts/delete";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String deletePost(@ModelAttribute Post post){
+        postService.delete(post);
+        return "redirect:/posts/";
+    }
+
+
 }
