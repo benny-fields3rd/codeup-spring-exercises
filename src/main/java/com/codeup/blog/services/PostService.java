@@ -5,12 +5,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-// Create a PostService class and inject it into your posts controller. The service should keep an array
-// list of posts internally, and have methods for:
-//
-// finding a post (retrieving an individual post object)
-// retrieving all the posts
-
 @Service
 public class PostService {
     private  List<Post> posts;
@@ -24,14 +18,14 @@ public class PostService {
         return posts;
     }
 
+    public Post singlePost(long id){
+        return posts.get((int)id - 1);
+    }
+
     public Post save(Post post){
         post.setId(posts.size() + 1);
         posts.add(post);
         return post;
-    }
-
-    public Post singlePost(long id){
-        return posts.get((int)id - 1);
     }
 
     public Post edit(Post post) {
@@ -42,16 +36,12 @@ public class PostService {
     }
 
     public void createPosts(){
-        Post post1 = new Post( "Post 1", "body 1");
-
+        Post post1 = new Post( "Switching Careers", "Lorem ipsum dolor sit amet, ludus definiebas est ne, vel integre legimus atomorum eu, verterem adipiscing duo cu.");
         save(post1); // One way to use create method to pass post
-        save(new Post( "Post 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
-                "\n"));
-        save(new Post("Post 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
-                "\n")); // another way to do it
-        save(new Post("Post 4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
-                "\n"));
-        save(new Post("Post 5", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique lacus eget tortor commodo pretium. Nullam nisl ligula, sollicitudin eget venenatis eget, venenatis ac neque. Maecenas vestibulum arcu vel vulputate eleifend. Maecenas pharetra libero nec velit suscipit imperdiet. In blandit porttitor justo, ac finibus neque vulputate eget. Maecenas hendrerit imperdiet purus dapibus pretium. Aliquam faucibus ex eget auctor accumsan. Suspendisse a erat sed augue pharetra rhoncus. Proin quis massa odio. Donec nec mollis ante. Sed molestie pellentesque est, malesuada fermentum ante luctus eu. Nulla viverra dapibus nunc, vel hendrerit est facilisis sed. Nulla pellentesque tempor lacus sit amet consectetur. Suspendisse sagittis feugiat justo.\n" +
-                "\n"));
+        save(new Post("Life of a Programmer", "Lorem ipsum dolor sit amet, ludus definiebas est ne, vel integre legimus atomorum eu, verterem adipiscing duo cu. Duo at malis nominavi oporteat, id per labore dissentiet conclusionemque. Probo lorem soluta mei no, nostrum epicurei singulis te vix. Quo cu esse assum nihil, ei virtute forensibus nec. Eu qui enim sale nulla. Delenit mediocrem eos ei."));
+        save(new Post("First Day at Codeup", "Lorem ipsum dolor sit amet, ludus definiebas est ne, vel integre legimus atomorum eu, verterem adipiscing duo cu. Duo at malis nominavi oporteat, id per labore dissentiet conclusionemque. Probo lorem soluta mei no, nostrum epicurei singulis te vix. Quo cu esse assum nihil, ei virtute forensibus nec. Ex sit illum porro conclusionemque, vis iudico signiferumque id, sea postea verterem ut."));
+        save(new Post("Selling All of My Video Games", "Lorem ipsum dolor sit amet, ludus definiebas est ne, vel integre legimus atomorum eu, verterem adipiscing duo cu. Duo at malis nominavi oporteat, id per labore dissentiet conclusionemque.  Eu qui enim sale nulla. Delenit mediocrem eos ei. Ex sit illum porro conclusionemque, vis iudico signiferumque id, sea postea verterem ut."));
+        save(new Post("Exam Time at Codeup", "Lorem ipsum dolor sit amet, ludus definiebas est ne, vel integre legimus atomorum eu, verterem adipiscing duo cu. Duo at malis nominavi oporteat, id per labore dissentiet conclusionemque. Probo lorem soluta mei no, . Quo cu esse assum nihilc. Eu qui enim sale nulla. Delenit mediocrem eos ei. Ex sit illum porro conclusionemque, vis iudico signiferumque id, sea postea verterem ut."));
+        save(new Post("Job Hunting Experience", "Lorem ipsum dolor sit amet, ludus definiebas est ne, vel integre legimus atomorum eu, verterem adipiscing duo cu. Duo at malis nominavi oporteat, id per labore dissentiet conclusionemque. Probo lorem soluta mei no. Eu qui enim sale nulla. Delenit mediocrem eos ei. Ex sit illum porro conclusionemque, vis iudico signiferumque id, sea postea verterem ut."));
     }
 }
