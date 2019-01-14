@@ -13,12 +13,10 @@ public class PostController {
     private final PostService postService;
     private final UserRepository userRepository;
 
-    public UserRepository(UserRepository userRepository){
-        this.userRepository = userRepository;
-    }
 
-    public PostController( PostService postService ) {
+    public PostController( PostService postService, UserRepository userRepository ) {
         this.postService = postService;
+        this.userRepository= userRepository;
     }
 
     @GetMapping("/posts")
