@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="partials2 :: head('Edit a Post')"></head>
+    <head th:replace="partials2 :: head('Delete a Post')"></head>
 
     <body>
     <main role="main" class="container">
@@ -9,15 +9,15 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Edit a Post</h5>
-                <form class="card-text" th:action="'/posts/' + ${post.id} + '/edit'" method="post" th:object="${post}">
+                <h5 class="card-title">Delete a Post</h5>
+                <form class="card-text" th:action="'/posts/' + ${post.id} + '/delete'" method="post" th:object="${post}">
                     <label>Title:</label>
                     <input th:field="*{title}"/>
                     <br />
                     <label>Description:</label>
                     <textarea th:field="*{body}"></textarea>
                     <br />
-                    <button type="submit">Edit Post</button>
+                    <button type="submit">Delete Post</button>
                 </form>
             </div>
         </div>

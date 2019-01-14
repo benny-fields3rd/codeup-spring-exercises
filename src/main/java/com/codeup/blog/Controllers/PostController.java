@@ -1,5 +1,6 @@
 package com.codeup.blog.Controllers;
 
+import com.codeup.blog.interfaces.UserRepository;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     private final PostService postService;
+    private final UserRepository userRepository;
+
+    public UserRepository(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     public PostController( PostService postService ) {
         this.postService = postService;
@@ -58,10 +64,10 @@ public class PostController {
         return "posts/delete";
     }
 
-    @PostMapping("/posts/{id}/edit")
+    @PostMapping("/posts/{id}/delete")
     public String deletePost(@ModelAttribute Post post){
         postService.delete(post);
-        return "redirect:/posts/";
+        return "redirect:/posts";
     }
 
 

@@ -2,16 +2,22 @@ package com.codeup.blog.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "posts") // Can be left off in order to actually create table
 public class Post {
-    @Id @GeneratedValue
+    // Create columns and properties
+    @Id
+    @GeneratedValue
     private long id;
 
     @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = false, length = 10000)
     private String body;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Post(){}
 
