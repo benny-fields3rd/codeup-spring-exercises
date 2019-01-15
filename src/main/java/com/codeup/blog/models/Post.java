@@ -1,4 +1,7 @@
 package com.codeup.blog.models;
+import com.codeup.blog.Controllers.PostController;
+import com.codeup.blog.services.PostService;
+
 import javax.persistence.*;
 
 @Entity
@@ -54,5 +57,8 @@ public class Post {
 
     public void setBody( String body ) {
         this.body = body;
+    }
+
+    public void setUser( User user ) {
     }
 }

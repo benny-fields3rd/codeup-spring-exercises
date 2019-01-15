@@ -1,5 +1,8 @@
 package com.codeup.blog.models;
 
+import com.codeup.blog.interfaces.UserRepository;
+import com.codeup.blog.services.PostService;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -53,4 +56,6 @@ public class User {
     public void setEmail( String email ) {
         this.email = email;
     }
+    
+
 }

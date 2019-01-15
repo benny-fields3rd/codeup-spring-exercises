@@ -2,6 +2,7 @@ package com.codeup.blog.Controllers;
 
 import com.codeup.blog.interfaces.UserRepository;
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,13 @@ public class PostController {
     public PostController( PostService postService, UserRepository userRepository ) {
         this.postService = postService;
         this.userRepository= userRepository;
+        // setting user before creating post
+        User user = userRepository.findOne(1L);
+        Post post = new Post();
+        post.setTitle("Apple Macbook Pro 15 inch");
+        post.setBody("Macbook Pro for sale! Excellent condition!");
+        post.setUser(user);
+        postService.save(post);
     }
 
     @GetMapping("/posts")
@@ -67,6 +75,7 @@ public class PostController {
         postService.delete(post);
         return "redirect:/posts";
     }
+
 
 
 }
