@@ -19,17 +19,18 @@ public class PostController {
         this.postService = postService;
         this.userRepository= userRepository;
         // setting user before creating post
-        User user = userRepository.findOne(1L);
-        Post post = new Post();
-        post.setTitle("Apple Macbook Pro 15 inch");
-        post.setBody("Macbook Pro for sale! Excellent condition!");
-        post.setUser(user);
-        postService.save(post);
+//        User user = userRepository.findOne(1L);
+//        Post post = new Post();
+//        post.setTitle("Apple Macbook Pro 15 inch");
+//        post.setBody("Macbook Pro for sale! Excellent condition!");
+//        post.setUser(user);
+//        postService.save(post);
     }
 
     @GetMapping("/posts")
     public String allPosts(Model model){
         model.addAttribute("posts", postService.allPosts());
+        System.out.println("There are " + userRepository.count() + "users.");
         return "posts/index";
     }
 
@@ -37,6 +38,7 @@ public class PostController {
     public String singlePost( @PathVariable long id, Model model ){
         model.addAttribute("post",postService.singlePost(id)); // pass id for single post
         model.addAttribute("id", id);
+        model.addAttribute("user", postService.singlePost(id).getUser() );
         return "posts/show";
     }
 
@@ -48,6 +50,8 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String saveNewPost(@ModelAttribute Post post){
+        long randomUser = (long) Math.floor(Math.random() * userRepository.count() + 1);
+        post.setUser(userRepository.findOne(randomUser));
         postService.save(post);
         return "redirect:/posts";
     }

@@ -12,8 +12,11 @@
                 <div class="card-body">
                     <h5 class="card-title"><span th:text="${post.title}"></span></h5>
                     <p class="card-text"><span th:text="${post.id}"></span></p>
-                    <p class="card-text"><span th:text="${post.body}"></span></p>
-                    <p class="card-text"><span th:text="${user.email}"></span></p>
+                    <p class="card-text">
+                        <span th:text="${post.body}"></span>
+                        Written by: <span th:text="${user.email}"></span>
+                    </p>
+
                 </div>
             </div>
 

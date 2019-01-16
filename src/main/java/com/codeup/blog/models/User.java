@@ -9,6 +9,13 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
 
     @Id @GeneratedValue
     private long id;
@@ -24,6 +31,8 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
+
+    public User(){}
 
     public long getId() {
         return id;
@@ -56,6 +65,8 @@ public class User {
     public void setEmail( String email ) {
         this.email = email;
     }
-    
 
+
+    public void save( User user ) {
+    }
 }

@@ -24,9 +24,9 @@ public class PostService {
         return postRepository.findOne(id);
     }
 
-//    public Post create(Post post){
-//            return postRepository.save(post);
-//    }
+    public Post create(Post post){
+            return postRepository.save(post);
+    }
 
     public Post save(Post post){
         return postRepository.save(post);
