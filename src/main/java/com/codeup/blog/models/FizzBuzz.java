@@ -1,8 +1,10 @@
 package com.codeup.blog.models;
 
+import java.util.Arrays;
+
 public class FizzBuzz {
 
-    public static void main(String[] args){
+    public static void main( String[] args ) {
         // FizzBuzz
 //        for(int i = 1; i <= 100; i ++){
 //            if(i % 15 ==0) {
@@ -29,7 +31,10 @@ public class FizzBuzz {
 //            System.out.println(i);
 //        }
 
+//        char[] array1 = {'4','s', '1', 'g', 'w', 't'};
+//        char[] array2 = Arrays.copyOfRange(array1, 0, 5);
+//        System.out.println(array2);
 
-        
+     
     }
 }
