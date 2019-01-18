@@ -16,7 +16,6 @@ public class User {
         password = copy.password;
     }
 
-
     @Id @GeneratedValue
     private long id;
 
@@ -65,7 +64,6 @@ public class User {
     public void setEmail( String email ) {
         this.email = email;
     }
-
 
     public void save( User user ) {
     }
